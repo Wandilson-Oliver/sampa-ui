@@ -1,0 +1,22 @@
+{
+  "name": "wandilson-oliver/sampa-ui",
+  "description": "Sampa UI - Blade components for Laravel",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "WandilsonOliver\\SampaUi\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "WandilsonOliver\\SampaUi\\SampaUiServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.2",
+    "illuminate/support": "^12.0"
+  }
+}
