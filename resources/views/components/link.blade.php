@@ -6,7 +6,9 @@
 <a
     href="{{ $href }}"
     @if($target) target="{{ $target }}" @endif
-    {{ $attributes }}
+    {{ $attributes->class([
+        'text-slate-600 underline',
+    ]) }}
 >
     {{ $slot }}
 </a>

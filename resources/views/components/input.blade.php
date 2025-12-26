@@ -8,5 +8,7 @@
     type="{{ $type }}"
     name="{{ $name }}"
     value="{{ old($name, $value) }}"
-    {{ $attributes }}
+    {{ $attributes->class([
+        'rounded-lg border bg-white dark:bg-neutral-900',
+    ]) }}
 />
