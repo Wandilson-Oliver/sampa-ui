@@ -5,7 +5,7 @@
 
 <div {{ $attributes->class(['rounded-lg border bg-white dark:bg-neutral-900 shadow p-4']) }}>
     {{-- Header --}}
-    @if(isset($header))
+    @if($title || $subtitle || isset($header))
         <div class="mb-4">
             @isset($header)
                 {{ $header }}
@@ -26,9 +26,11 @@
     </div>
 
     {{-- Footer --}}
-    @isset($footer)
-        <div class="border-t mt-3 pt-3 flex gap-2 space-x-2">
-            {{ $footer }}
-        </div>
-    @endisset
+    @if ($footer)
+        @isset($footer)
+            <div class="border-t mt-3 pt-3 flex gap-2 space-x-2">
+                {{ $footer }}
+            </div>
+        @endisset    
+    @endif
 </div>
