@@ -27,7 +27,7 @@
 
     {{-- Footer --}}
     @isset($footer)
-        <div class="border-t mt-3 pt-3 flex gap-2 space-x-2">
+        <div class="mt-4 pt-4 flex just justify-end gap-2 space-x-2">
             {{ $footer }}
         </div>
     @endisset    
