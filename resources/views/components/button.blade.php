@@ -1,37 +1,47 @@
 @props([
     'label' => null,
-    'variant' => 'primary', // primary, secondary, danger
+    'variant' => 'primary', // primary, secondary, danger, ghost
     'outline' => false,
 ])
 
 @php
-    // Classe base do botão
+    // Classe base
     $baseClasses = 'px-4 py-2 rounded font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
-    // Detecta se o usuário passou uma cor custom via class
-    $userClasses = $attributes->get('class'); // pega a string completa de classes
+    // Detecta se o usuário passou cores custom via class
+    $userClasses = $attributes->get('class');
     $hasCustomColor = collect(explode(' ', $userClasses))->contains(function($c){
         return str()->startsWith($c, ['bg-', 'text-', 'border-']);
     });
 
-    // Só aplica cores padrão se não houver cor custom
+    // Cores padrão por variant
+    $defaultColors = [
+        'primary' => 'blue',
+        'secondary' => 'gray',
+        'danger' => 'red',
+        'ghost' => 'gray', // ghost usa apenas hover e texto
+    ];
+
+    $color = $defaultColors[$variant] ?? 'gray';
+
     if (!$hasCustomColor) {
-        // Cores padrão por variant
-        $defaultColors = [
-            'primary' => 'blue-600',
-            'secondary' => 'gray-600',
-            'danger' => 'red-600',
-        ];
+        switch ($variant) {
+            case 'ghost':
+                // Ghost: fundo transparente, apenas texto e hover
+                $colorClasses = $outline 
+                    ? "bg-transparent border border-transparent text-{$color}-500 hover:bg-{$color}-400"
+                    : "bg-transparent text-{$color}-500 hover:bg-{$color}-400";
+                $ring = "focus:ring-{$color}-500";
+                break;
 
-        $btnColor = $defaultColors[$variant] ?? 'gray-600';
-
-        if ($outline) {
-            $colorClasses = "bg-transparent border border-{$btnColor} text-{$btnColor} hover:bg-{$btnColor} hover:text-white";
-        } else {
-            $colorClasses = "bg-{$btnColor} text-white hover:bg-{$btnColor}-700";
+            default:
+                if ($outline) {
+                    $colorClasses = "bg-transparent border border-{$color}-500 text-{$color}-500 hover:bg-{$color}-500 hover:text-white";
+                } else {
+                    $colorClasses = "bg-{$color}-500 text-white hover:bg-{$color}-400";
+                }
+                $ring = "focus:ring-{$color}-500";
         }
-
-        $ring = "focus:ring-{$btnColor}";
     } else {
         $colorClasses = '';
         $ring = '';
