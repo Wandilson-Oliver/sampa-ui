@@ -5,7 +5,7 @@
 
 <div {{ $attributes->class(['rounded-lg border bg-white dark:bg-neutral-900 shadow p-4']) }}>
     {{-- Header --}}
-    @if($title || $subtitle || isset($header))
+    @if(isset($header))
         <div class="mb-4">
             @isset($header)
                 {{ $header }}
@@ -21,7 +21,7 @@
     @endif
 
     {{-- Body --}}
-    <div class="">
+    <div>
         {{ $slot }}
     </div>
 
