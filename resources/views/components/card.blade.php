@@ -26,11 +26,9 @@
     </div>
 
     {{-- Footer --}}
-    @if ($footer)
-        @isset($footer)
-            <div class="border-t mt-3 pt-3 flex gap-2 space-x-2">
-                {{ $footer }}
-            </div>
-        @endisset    
-    @endif
+    @isset($footer)
+        <div class="border-t mt-3 pt-3 flex gap-2 space-x-2">
+            {{ $footer }}
+        </div>
+    @endisset    
 </div>
