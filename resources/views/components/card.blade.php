@@ -21,13 +21,13 @@
     @endif
 
     {{-- Body --}}
-    <div class="mb-4">
+    <div class="">
         {{ $slot }}
     </div>
 
     {{-- Footer --}}
     @isset($footer)
-        <div class="mt-4 border-t pt-3 flex space-x-2">
+        <div class="border-t mt-3 pt-3 flex gap-2 space-x-2">
             {{ $footer }}
         </div>
     @endisset
