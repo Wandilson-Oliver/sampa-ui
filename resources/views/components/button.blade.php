@@ -5,7 +5,7 @@
 <button
     type="{{ $type }}"
     {{ $attributes->class([
-        'inline-flex items-center rounded-md text-sm font-medium transition',
+        'inline-flex items-center rounded-md cursor-pointer hover:opacity-75 text-sm font-medium transition',
     ]) }}
 >
     {{ $slot }}
