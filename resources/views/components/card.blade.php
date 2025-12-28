@@ -3,32 +3,53 @@
     'subtitle' => null,
 ])
 
-<div {{ $attributes->class(['rounded-lg border bg-white dark:bg-neutral-900 shadow p-4']) }}>
+@php
+$base = 'rounded-lg border border-slate-600 shadow-sm
+        bg-white text-neutral-900
+        dark:bg-neutral-900 dark:text-neutral-100
+        transition';
+
+$sections = [
+    'header' => 'mb-4 space-y-1',
+    'body'   => '',
+    'footer' => 'mt-4 pt-4 flex justify-end gap-2 border-t
+                 border-neutral-200 dark:border-neutral-700',
+];
+@endphp
+
+<div {{ $attributes->merge([
+    'class' => $base,
+]) }}>
     {{-- Header --}}
-    @if($title || $subtitle || isset($header))
-        <div class="mb-4">
+    @if ($title || $subtitle || isset($header))
+        <div class="{{ $sections['header'] }}">
             @isset($header)
                 {{ $header }}
             @else
-                @if($title)
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $title }}</h3>
+                @if ($title)
+                    <h3 class="text-lg font-semibold">
+                        {{ $title }}
+                    </h3>
                 @endif
-                @if($subtitle)
-                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ $subtitle }}</p>
+
+                @if ($subtitle)
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                        {{ $subtitle }}
+                    </p>
                 @endif
-            @endif
+            @endisset
         </div>
     @endif
 
     {{-- Body --}}
-    <div>
+    <div class="{{ $sections['body'] }}">
         {{ $slot }}
     </div>
 
     {{-- Footer --}}
     @isset($footer)
-        <div class="mt-4 pt-4 flex just justify-end gap-2 space-x-2">
+        <div class="{{ $sections['footer'] }}">
             {{ $footer }}
         </div>
-    @endisset    
+    @endisset
 </div>
