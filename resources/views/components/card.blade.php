@@ -4,16 +4,16 @@
 ])
 
 @php
-$base = 'rounded-lg border border-slate-400 shadow-sm p-5
-        bg-white text-neutral-900
-        dark:bg-neutral-900 dark:text-neutral-100
+$base = 'rounded-lg border-slate-400 shadow-sm p-6
+        bg-white text-slate-900
+        dark:bg-slate-900 dark:text-slate-100
         transition';
 
 $sections = [
     'header' => 'mb-4 space-y-1',
     'body'   => '',
     'footer' => 'mt-4 pt-4 flex justify-end gap-2 border-t
-                 border-neutral-200 dark:border-neutral-700',
+                 border-slate-200 dark:border-slate-700',
 ];
 @endphp
 
@@ -33,7 +33,7 @@ $sections = [
                 @endif
 
                 @if ($subtitle)
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                    <p class="text-sm text-slate-500 dark:text-slate-400">
                         {{ $subtitle }}
                     </p>
                 @endif
