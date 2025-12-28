@@ -4,7 +4,7 @@
 ])
 
 @php
-$base = 'rounded-lg border border-slate-400 p-6
+$base = 'rounded-lg border border-slate-600 p-6
         bg-white text-slate-900';
 
 $sections = [
