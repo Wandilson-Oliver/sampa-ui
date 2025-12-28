@@ -1,53 +1,77 @@
 @props([
-    'label' => null,
-    'variant' => 'primary', // primary, secondary, danger, ghost
-    'outline' => false,
+    'type' => 'button',
+    'variant' => 'default',
 ])
 
 @php
-    // Classe base
-    $baseClasses = 'px-4 py-2 rounded font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+    $baseClasses = '
+        inline-flex items-center justify-center gap-2
+        px-5 py-2.5 rounded-full
+        font-medium text-sm
+        transition-colors duration-200
+        focus:outline-none focus:ring-2 focus:ring-offset-2
+        focus:ring-offset-white dark:focus:ring-offset-neutral-900
+        disabled:opacity-50 disabled:pointer-events-none
+    ';
 
-    // Detecta se o usuário passou cores custom via class
-    $userClasses = $attributes->get('class');
-    $hasCustomColor = collect(explode(' ', $userClasses))->contains(function($c){
-        return str()->startsWith($c, ['bg-', 'text-', 'border-']);
-    });
+    $variants = [
+        'default' => '
+            bg-neutral-200 text-neutral-800
+            hover:bg-neutral-300
+            focus:ring-neutral-300
+            dark:bg-neutral-700 dark:text-neutral-100
+            dark:hover:bg-neutral-600
+        ',
 
-    // Cores padrão por variant
-    $defaultColors = [
-        'primary' => 'blue',
-        'secondary' => 'gray',
-        'danger' => 'red',
-        'ghost' => 'gray', // ghost usa apenas hover e texto
+        'primary' => '
+            bg-indigo-400 text-white
+            hover:bg-indigo-500
+            focus:ring-indigo-400
+            dark:bg-indigo-500 dark:hover:bg-indigo-400
+        ',
+
+        'secondary' => '
+            bg-pink-400 text-white
+            hover:bg-pink-500
+            focus:ring-pink-400
+            dark:bg-pink-500 dark:hover:bg-pink-400
+        ',
+
+        'info' => '
+            bg-sky-400 text-white
+            hover:bg-sky-500
+            focus:ring-sky-400
+            dark:bg-sky-500 dark:hover:bg-sky-400
+        ',
+
+        'success' => '
+            bg-emerald-400 text-white
+            hover:bg-emerald-500
+            focus:ring-emerald-400
+            dark:bg-emerald-500 dark:hover:bg-emerald-400
+        ',
+
+        'warning' => '
+            bg-orange-400 text-white
+            hover:bg-orange-500
+            focus:ring-orange-400
+            dark:bg-orange-500 dark:hover:bg-orange-400
+        ',
+
+        'error' => '
+            bg-red-400 text-white
+            hover:bg-red-500
+            focus:ring-red-400
+            dark:bg-red-500 dark:hover:bg-red-400
+        ',
     ];
 
-    $color = $defaultColors[$variant] ?? 'gray';
-
-    if (!$hasCustomColor) {
-        switch ($variant) {
-            case 'ghost':
-                // Ghost: fundo transparente, apenas texto e hover
-                $colorClasses = $outline 
-                    ? "bg-transparent border border-transparent text-{$color}-500 hover:bg-{$color}-400"
-                    : "bg-transparent text-{$color}-500 hover:bg-{$color}-400";
-                $ring = "focus:ring-{$color}-500";
-                break;
-
-            default:
-                if ($outline) {
-                    $colorClasses = "bg-transparent border border-{$color}-500 text-{$color}-500 hover:bg-{$color}-500 hover:text-white";
-                } else {
-                    $colorClasses = "bg-{$color}-500 text-white hover:bg-{$color}-400";
-                }
-                $ring = "focus:ring-{$color}-500";
-        }
-    } else {
-        $colorClasses = '';
-        $ring = '';
-    }
+    $variantClasses = $variants[$variant] ?? $variants['default'];
 @endphp
 
-<button {{ $attributes->merge(['class' => "$baseClasses $colorClasses $ring"]) }}>
-    {{ $label ?? $slot }}
+<button
+    type="{{ $type }}"
+    {{ $attributes->class([$baseClasses, $variantClasses]) }}
+>
+    {{ $slot }}
 </button>

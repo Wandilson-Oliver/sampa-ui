@@ -1,0 +1,89 @@
+/* =======================
+   Base
+======================= */
+.btn {
+    @apply inline-flex items-center justify-center gap-2
+           px-4 py-2 rounded-md
+           font-medium text-sm
+           transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           focus:ring-offset-white dark:focus:ring-offset-neutral-900
+           disabled:opacity-50 disabled:pointer-events-none;
+}
+
+/* =======================
+   Filled variants
+   500 base / 400 hover
+======================= */
+
+.btn-primary {
+    @apply bg-blue-500 text-white
+           hover:bg-blue-400
+           focus:ring-blue-500
+           dark:bg-blue-500
+           dark:hover:bg-blue-400;
+}
+
+.btn-secondary {
+    @apply bg-gray-500 text-white
+           hover:bg-gray-400
+           focus:ring-gray-500
+           dark:bg-gray-500
+           dark:hover:bg-gray-400;
+}
+
+.btn-danger {
+    @apply bg-red-500 text-white
+           hover:bg-red-400
+           focus:ring-red-500
+           dark:bg-red-500
+           dark:hover:bg-red-400;
+}
+
+/* =======================
+   Ghost
+======================= */
+
+.btn-ghost {
+    @apply bg-transparent text-gray-600
+           hover:bg-gray-400/20
+           focus:ring-gray-500
+           dark:text-gray-300
+           dark:hover:bg-gray-400/20;
+}
+
+/* =======================
+   Outline
+======================= */
+
+.btn-outline-primary {
+    @apply bg-transparent border border-blue-500 text-blue-500
+           hover:bg-blue-500 hover:text-white
+           focus:ring-blue-500
+           dark:border-blue-400 dark:text-blue-400
+           dark:hover:bg-blue-400 dark:hover:text-white;
+}
+
+.btn-outline-secondary {
+    @apply bg-transparent border border-gray-500 text-gray-500
+           hover:bg-gray-500 hover:text-white
+           focus:ring-gray-500
+           dark:border-gray-400 dark:text-gray-400
+           dark:hover:bg-gray-400 dark:hover:text-white;
+}
+
+.btn-outline-danger {
+    @apply bg-transparent border border-red-500 text-red-500
+           hover:bg-red-500 hover:text-white
+           focus:ring-red-500
+           dark:border-red-400 dark:text-red-400
+           dark:hover:bg-red-400 dark:hover:text-white;
+}
+
+.btn-outline-ghost {
+    @apply bg-transparent border border-gray-400 text-gray-600
+           hover:bg-gray-400/20
+           focus:ring-gray-500
+           dark:border-gray-500 dark:text-gray-300
+           dark:hover:bg-gray-400/20;
+}
