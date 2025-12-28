@@ -1,5 +1,6 @@
 @props([
-    'type' => 'button'
+    'type' => 'button',
+    'variant' => 'default',
 ])
 
 @php
@@ -37,9 +38,8 @@ $variants = [
 
 <button
     type="{{ $type }}"
-    {{ $attributes->class([
-        $base,
-        $variants[$attributes->get('variant', 'default')] ?? $variants['default'],
+    {{ $attributes->merge([
+        'class' => $base.' '.($variants[$variant] ?? $variants['default']),
     ]) }}
 >
     {{ $slot }}
