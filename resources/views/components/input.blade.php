@@ -19,6 +19,6 @@
     name="{{ $name }}"
     value="{{ $inputValue }}"
     {{ $attributes->class([
-        'rounded-lg border bg-white dark:bg-neutral-900',
+        'rounded-lg border bg-white p-3',
     ]) }}
 />
