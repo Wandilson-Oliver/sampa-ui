@@ -12,14 +12,14 @@ $base = 'inline-flex items-center justify-center gap-2
         disabled:opacity-50 disabled:pointer-events-none';
 
 $variants = [
-    'default'   => 'bg-slate-50 text-neutral-900 hover:bg-neutral-300
-                    dark:bg-slate-50 dark:text-white dark:hover:bg-neutral-200',
+    'default'   => 'bg-slate-100 text-slate-900 hover:bg-slate-300
+                    dark:bg-slate-50 dark:text-white dark:hover:bg-slate-200',
 
     'primary'   => 'bg-blue-500 text-white hover:bg-blue-600
                     dark:bg-blue-600 dark:hover:bg-blue-600',
 
-    'secondary' => 'bg-pink-500 text-white hover:bg-pink-600
-                    dark:bg-pink-600 dark:hover:bg-pink-600',
+    'secondary' => 'bg-slate-500 text-white hover:bg-slate-600
+                    dark:bg-slate-600 dark:hover:bg-slate-600',
 
     'info'      => 'bg-sky-500 text-white hover:bg-sky-600
                     dark:bg-sky-600 dark:hover:bg-sky-600',
