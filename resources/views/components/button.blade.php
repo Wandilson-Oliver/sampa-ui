@@ -1,77 +1,46 @@
 @props([
-    'type' => 'button',
-    'variant' => 'default',
+    'type' => 'button'
 ])
 
 @php
-    $baseClasses = '
-        inline-flex items-center justify-center gap-2
-        px-5 py-2.5 rounded-full
+$base = 'inline-flex items-center justify-center gap-2
+        px-4 py-2 rounded-md
         font-medium text-sm
         transition-colors duration-200
         focus:outline-none focus:ring-2 focus:ring-offset-2
         focus:ring-offset-white dark:focus:ring-offset-neutral-900
-        disabled:opacity-50 disabled:pointer-events-none
-    ';
+        disabled:opacity-50 disabled:pointer-events-none';
 
-    $variants = [
-        'default' => '
-            bg-neutral-200 text-neutral-800
-            hover:bg-neutral-300
-            focus:ring-neutral-300
-            dark:bg-neutral-700 dark:text-neutral-100
-            dark:hover:bg-neutral-600
-        ',
+$variants = [
+    'default'   => 'bg-slate-50 text-neutral-900 hover:bg-neutral-300
+                    dark:bg-neutral-700 dark:text-white dark:hover:bg-neutral-600',
 
-        'primary' => '
-            bg-blue-400 text-white
-            hover:bg-blue-500
-            focus:ring-blue-400
-            dark:bg-blue-500 dark:hover:bg-blue-400
-        ',
+    'primary'   => 'bg-blue-400 text-white hover:bg-blue-500
+                    dark:bg-blue-500 dark:hover:bg-blue-600',
 
-        'secondary' => '
-            bg-pink-400 text-white
-            hover:bg-pink-500
-            focus:ring-pink-400
-            dark:bg-pink-500 dark:hover:bg-pink-400
-        ',
+    'secondary' => 'bg-fuchsia-400 text-white hover:bg-fuchsia-500
+                    dark:bg-fuchsia-500 dark:hover:bg-fuchsia-600',
 
-        'info' => '
-            bg-sky-400 text-white
-            hover:bg-sky-500
-            focus:ring-sky-400
-            dark:bg-sky-500 dark:hover:bg-sky-400
-        ',
+    'info'      => 'bg-sky-400 text-white hover:bg-sky-500
+                    dark:bg-sky-500 dark:hover:bg-sky-600',
 
-        'success' => '
-            bg-emerald-400 text-white
-            hover:bg-emerald-500
-            focus:ring-emerald-400
-            dark:bg-emerald-500 dark:hover:bg-emerald-400
-        ',
+    'success'   => 'bg-emerald-400 text-white hover:bg-emerald-500
+                    dark:bg-emerald-500 dark:hover:bg-emerald-600',
 
-        'warning' => '
-            bg-orange-400 text-white
-            hover:bg-orange-500
-            focus:ring-orange-400
-            dark:bg-orange-500 dark:hover:bg-orange-400
-        ',
+    'warning'   => 'bg-amber-400 text-white hover:bg-amber-500
+                    dark:bg-amber-500 dark:hover:bg-amber-600',
 
-        'error' => '
-            bg-red-400 text-white
-            hover:bg-red-500
-            focus:ring-red-400
-            dark:bg-red-500 dark:hover:bg-red-400
-        ',
-    ];
-
-    $variantClasses = $variants[$variant] ?? $variants['default'];
+    'error'     => 'bg-red-400 text-white hover:bg-red-500
+                    dark:bg-red-500 dark:hover:bg-red-600',
+];
 @endphp
 
 <button
     type="{{ $type }}"
-    {{ $attributes->class([$baseClasses, $variantClasses]) }}
+    {{ $attributes->class([
+        $base,
+        $variants[$attributes->get('variant', 'default')] ?? $variants['default'],
+    ]) }}
 >
     {{ $slot }}
 </button>
