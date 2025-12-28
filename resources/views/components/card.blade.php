@@ -4,7 +4,7 @@
 ])
 
 @php
-$base = 'rounded-lg border border-slate-600 shadow-sm
+$base = 'rounded-lg border border-slate-400 shadow-sm p-5
         bg-white text-neutral-900
         dark:bg-neutral-900 dark:text-neutral-100
         transition';
