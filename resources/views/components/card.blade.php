@@ -4,14 +4,14 @@
 ])
 
 @php
-$base = 'rounded-lg border-slate-600 p-6
+$base = 'rounded-lg border border-slate-600 p-6
         bg-white text-slate-900';
 
 $sections = [
     'header' => 'mb-4 space-y-1',
     'body'   => '',
     'footer' => 'mt-4 pt-4 flex justify-end gap-2
-                 border-t-slate-600',
+                 border-t border-t-slate-600',
 ];
 @endphp
 
