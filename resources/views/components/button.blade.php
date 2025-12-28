@@ -24,10 +24,10 @@
         ',
 
         'primary' => '
-            bg-indigo-400 text-white
-            hover:bg-indigo-500
-            focus:ring-indigo-400
-            dark:bg-indigo-500 dark:hover:bg-indigo-400
+            bg-blue-400 text-white
+            hover:bg-blue-500
+            focus:ring-blue-400
+            dark:bg-blue-500 dark:hover:bg-blue-400
         ',
 
         'secondary' => '
